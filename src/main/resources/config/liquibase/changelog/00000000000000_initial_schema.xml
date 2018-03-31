@@ -14,46 +14,119 @@
         JHipster core tables.
         The initial schema has the '00000000000001' id, so that it is over-written if we re-generate it.
     -->
-    <changeSet id="00000000000001" author="jhipster">
-        <createTable tableName="jhi_persistent_audit_event">
-            <column name="event_id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="principal" type="varchar(50)">
-                <constraints nullable="false" />
-            </column>
-            <column name="event_date" type="timestamp"/>
-            <column name="event_type" type="varchar(255)"/>
-        </createTable>
-
-        <createTable tableName="jhi_persistent_audit_evt_data">
-            <column name="event_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="name" type="varchar(150)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="value" type="varchar(255)"/>
-        </createTable>
-        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
-
-        <createIndex indexName="idx_persistent_audit_event"
-                     tableName="jhi_persistent_audit_event"
-                     unique="false">
-            <column name="principal" type="varchar(50)"/>
-            <column name="event_date" type="timestamp"/>
-        </createIndex>
-
-        <createIndex indexName="idx_persistent_audit_evt_data"
-                     tableName="jhi_persistent_audit_evt_data"
-                     unique="false">
-            <column name="event_id" type="bigint"/>
-        </createIndex>
-
-        <addForeignKeyConstraint baseColumnNames="event_id"
-                                 baseTableName="jhi_persistent_audit_evt_data"
-                                 constraintName="fk_evt_pers_audit_evt_data"
-                                 referencedColumnNames="event_id"
-                                 referencedTableName="jhi_persistent_audit_event"/>
+    <changeSet id="00000000001521" author="jhipster">
+		<createTable tableName="ipx_device_ce">
+			<column name="ce_id" type="varchar(45)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="ce_name" type="varchar(45)">
+			</column>
+			<column name="ce_port" type="varchar(45)">
+			</column>
+			<column name="ce_ip" type="varchar(45)">
+			</column>
+			<column name="ssh_username" type="varchar(45)">
+			</column>
+			<column name="ssh_password" type="varchar(45)">
+			</column>
+			<column name="os" type="varchar(45)">
+			</column>
+			<column name="os_kernel" type="varchar(45)">
+			</column>
+			<column name="cpu_total" type="varchar(45)">
+			</column>
+			<column name="disk_mount" type="varchar(45)">
+			</column>
+			<column name="swap_total" type="varchar(45)">
+			</column>
+			<column name="server_type" type="varchar(45)">
+			</column>
+			<column name="disk_total" type="varchar(45)">
+			</column>
+			<column name="mem_total" type="varchar(45)">
+			</column>
+			<column name="os_type" type="varchar(45)">
+			</column>
+			<column name="ipv4" type="varchar(45)">
+			</column>
+			<column name="host_name" type="varchar(45)">
+			</column>
+			<column name="cpu_type" type="varchar(45)">
+			</column>	
+			<column name="status" type="int">
+			</column>			
+		</createTable>	
+		
+		<createTable tableName="ipx_vll_link">
+			<column name="vll_link_id" type="varchar(45)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="vll_link_name" type="varchar(45)">
+			</column>
+			<column name="src_device_id" type="varchar(45)">
+			</column>
+			<column name="dst_device" type="varchar(45)">
+			</column>
+			<column name="dst_port_ip" type="varchar(45)">
+			</column>
+			<column name="link_status" type="int">
+			</column>
+			<column name="delay_average" type="int">
+			</column>
+			<column name="delay_maxnum" type="int">
+			</column>
+			<column name="delay_minnum" type="int">
+			</column>	
+			<column name="packet_loss" type="double">
+			</column>		
+			<column name="last_test_time" type="date">
+			</column>
+		</createTable>
+		
+		<createTable tableName="ipx_vll_link_delay">
+			<column name="vll_link_id" type="varchar(45)">
+			</column>
+			<column name="link_status" type="int">
+			</column>
+			<column name="delay_average" type="double">
+			</column>
+			<column name="delay_maxnum" type="double">
+			</column>
+			<column name="delay_minnum" type="double">
+			</column>	
+			<column name="packet_loss" type="varchar(45)">
+			</column>		
+			<column name="test_time" type="date">
+			</column>
+		</createTable>	
+		
+		<createTable tableName="ipx_device_performance">
+			<column name="ce_id" type="varchar(45)">
+			</column>
+			<column name="cpu_user" type="double">
+			</column>
+			<column name="cpu_nice" type="double">
+			</column>
+			<column name="cpu_system" type="double">
+			</column>
+			<column name="cpu_steal" type="double">
+			</column>
+			<column name="cpu_idle" type="double">
+			</column>	
+			<column name="rxbyt" type="double">
+			</column>	
+			<column name="txbyt" type="double">
+			</column>	
+			<column name="kbmemfree" type="varchar(45)">
+			</column>
+			<column name="kbmemused" type="varchar(45)">
+			</column>
+			<column name="memused" type="double">
+			</column>	
+			<column name="test_time" type="date">
+			</column>
+		</createTable>	
+		
+		
     </changeSet>
 </databaseChangeLog>

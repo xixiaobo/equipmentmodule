@@ -132,4 +132,6 @@ jhipster:
 # http://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
+pythonWeb: "http://47.94.147.210:10240/"
+
 application:
